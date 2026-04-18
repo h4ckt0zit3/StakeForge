@@ -98,6 +98,7 @@ contract StakeForge is ReentrancyGuard {
 
         (uint256 duration, uint256 apyBps) = _resolveDuration(durationChoice);
 
+        // Effects — update state before external call (CEI pattern)
         stakes[msg.sender] = Stake({
             amount: amount,
             startTime: block.timestamp,
@@ -108,6 +109,7 @@ contract StakeForge is ReentrancyGuard {
 
         totalStaked += amount;
 
+        // Interaction — external call last
         stakingToken.safeTransferFrom(msg.sender, address(this), amount);
 
         emit Staked(msg.sender, amount, duration, apyBps);
