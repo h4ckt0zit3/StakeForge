@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* ─── Forge Protocol Design System ──────────────────────────── */
+@theme {
+  --color-bg: #0e0e0f;
+  --color-surface: #0e0e0f;
+  --color-surface-dim: #0e0e0f;
+  --color-surface-bright: #2c2c2d;
+  --color-surface-lowest: #000000;
+  --color-surface-low: #131314;
+  --color-surface-container: #19191b;
+  --color-surface-high: #1f1f21;
+  --color-surface-highest: #262627;
+  --color-surface-variant: #262627;
+
+  --color-primary: #a4ffb9;
+  --color-primary-dim: #00ed7e;
+  --color-primary-container: #00fd87;
+
+  --color-secondary: #72fbbd;
+  --color-secondary-dim: #63ecaf;
+  --color-secondary-container: #006c49;
+
+  --color-tertiary: #7ee6ff;
+  --color-tertiary-container: #00dcff;
+
+  --color-on-surface: #ffffff;
+  --color-on-surface-variant: #adaaab;
+  --color-on-primary: #006532;
+  --color-on-primary-container: #005b2c;
+
+  --color-outline: #767576;
+  --color-outline-variant: #484849;
+
+  --color-error: #ff716c;
+  --color-error-dim: #d7383b;
+
+  --font-headline: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-label: "Inter", system-ui, sans-serif;
+}
+
+/* ─── Base ──────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary-container);
+}
+
+/* ─── Custom Utilities ──────────────────────────────────────── */
+.neon-glow {
+  text-shadow: 0 0 20px rgba(0, 253, 135, 0.4);
+}
+
+.glass-panel {
+  background: rgba(19, 19, 20, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.ambient-shadow {
+  box-shadow: 0 0 40px rgba(164, 255, 185, 0.08);
+}
+
+.neon-shadow {
+  box-shadow: 0 0 30px rgba(0, 253, 135, 0.2);
+}
+
+.neon-shadow-hover {
+  box-shadow: 0 0 40px rgba(0, 253, 135, 0.35);
+}
+
+/* ─── Animations ────────────────────────────────────────────── */
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+/* Stagger children */
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 80ms; }
+.stagger > *:nth-child(3) { animation-delay: 160ms; }
+.stagger > *:nth-child(4) { animation-delay: 240ms; }
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* ─── Toast Overrides ───────────────────────────────────────── */
+[data-sonner-toaster] {
+  font-family: var(--font-body) !important;
+}
