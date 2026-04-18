@@ -1,8 +1,8 @@
 // ─── Contract Addresses (Update after deployment) ───────────
 // Sepolia testnet addresses — replace with your deployed addresses
 export const CONTRACTS = {
-  SFORGE_TOKEN: "0x0000000000000000000000000000000000000000",
-  STAKE_FORGE: "0x0000000000000000000000000000000000000000",
+  SFORGE_TOKEN: "0xDf6130dC8c88fe2A28170A0471b0E6898B50fbaA",
+  STAKE_FORGE: "0xE275B6DAbd9025d57c6eeadcbe680c9278Ab681b",
 };
 
 // ─── Chain Config ────────────────────────────────────────────
